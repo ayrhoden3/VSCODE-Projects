@@ -16,21 +16,21 @@ int main() {
     router.addConnection("NY_Microwave", "LME", 25.0, "Transatlantic_Radio");
     router.addConnection("NY_Fiber", "LME", 29.4, "Transatlantic_Cable");
 
-    std::cout << "--- PHASE 1: Baseline Routing ---" << std::endl;
+    std::cout << "  PHASE 1: Baseline Routing " << std::endl;
     router.routeArbitrageSignal("CME", "LME");
 
     std::this_thread::sleep_for(std::chrono::seconds(2));
 
-    std::cout << "----------------------------------------------------" << std::endl;
+    std::cout << std::endl;
     std::cout << "[EVENT] Heavy rain system moving across Pennsylvania." << std::endl;
     std::cout << "[EVENT] Microwave_Tower_A latency spiking to 12.5ms!" << std::endl;
-    std::cout << "----------------------------------------------------" << std::endl << std::endl;
+    std::cout << std::endl << std::endl;
 
     router.updateConnectionLatency("CME", "NY_Microwave", 12.5);
 
     std::this_thread::sleep_for(std::chrono::seconds(1));
 
-    std::cout << "--- PHASE 2: Dynamic Rerouting ---" << std::endl;
+    std::cout << "  PHASE 2: Dynamic Rerouting " << std::endl;
     router.routeArbitrageSignal("CME", "LME");
 
     return 0;
